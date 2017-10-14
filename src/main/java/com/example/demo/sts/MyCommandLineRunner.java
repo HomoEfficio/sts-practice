@@ -8,14 +8,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class MyCommandLineRunner implements CommandLineRunner {
 
+	private final String addLabel;
+	
 	private final AlgebraService algebraService;
 	
-	@Value("${service.algebra.add}")
-	private String addLabel;
-	
 	@Autowired
-	public MyCommandLineRunner(AlgebraService algebraService) {
+	public MyCommandLineRunner(@Value("${service.algebra.add}") String addLabel, AlgebraService algebraService) {
 		super();
+		this.addLabel = addLabel;
 		this.algebraService = algebraService;
 	}
 
